@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.huar.calendar.MainViewModel" />
+
+        <variable
+            name="click"
+            type="com.huar.calendar.MainActivity.ClickProxy" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F8F8F8"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="20dp"
+                android:text="@{viewModel.monthTitle}"
+                android:textColor="#ff10141a"
+                android:textFontWeight="7"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/icon_calendar_pre"
+                android:onClick="@{() -> click.calendarPrevious()}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:rotation="180"
+                android:src="@drawable/icon_calendar_pre"
+                android:onClick="@{() -> click.calendarNext()}" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+            <com.huar.calendar.calendar.EventsCalendar
+                android:id="@+id/eventsCalendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:overScrollMode="never"
+                app:datesTextSize="15sp"
+                app:eventDotColor="@color/colorPrimary"
+                app:isBoldTextOnSelectionEnabled="false"
+                app:monthTitleColor="@android:color/black"
+                app:primaryTextColor="@color/black"
+                app:rangeSelectionColor="@color/colorPrimary"
+                app:secondaryTextColor="@android:color/darker_gray"
+                app:selectedTextColor="@color/white"
+                app:selectionColor="@color/colorPrimary"
+                app:weekHeaderColor="@android:color/darker_gray" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSomething"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>
